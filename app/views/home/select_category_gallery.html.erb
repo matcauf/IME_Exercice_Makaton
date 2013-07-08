@@ -1,0 +1,25 @@
+<% content_for :title, @title %>
+<div class="metro panorama">
+	<div class="panorama-sections">
+		<div class="panorama-section tile-span-2">
+			<h2>Toutes catégories</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama_gallery', :locals => { :gallery_id => "false", :category_id => "false" , :image => (asset_path "dice.png"), :name => "Aléatoire"}%> 
+			</div>
+		</div>
+		<% @navigation_categories.collect do |k,v| %>
+	   <%if v.length >= @number.to_i %>
+		<div class="panorama-section tile-span-2">
+			<h2><%= k.name.titleize%></h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama_gallery', :locals => { :gallery_id => "false", :category_id => k.id , :image => (asset_path "dice.png"), :name => "Aléatoire sur " + k.name}%>
+				<% v.collect do |gallery| %>
+				<%= render partial: 'panorama_gallery', :locals => { :gallery_id => gallery.id, :category_id => k.id , :image => gallery.pictogramme.picto.url, :name => gallery.pictogramme.name}%>
+				<% end %>
+			</div>
+		</div>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+<%= render "arrow"%>

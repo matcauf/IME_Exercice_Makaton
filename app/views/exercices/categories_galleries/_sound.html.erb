@@ -1,0 +1,7 @@
+<% if @gallery.pictogramme.sound?%>
+<audio id="true_sound">
+	<source src= '<%= @gallery.pictogramme.sound.url(:original)%>'>
+	<source src='<%= @gallery.pictogramme.sound.url(:ogg)%>'>
+	votre navigateur ne supporte pas le format mp3 ou ogg
+</audio>
+<% end %>

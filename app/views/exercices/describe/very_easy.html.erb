@@ -1,0 +1,141 @@
+<% content_for :title, "Description d'images simple" %>
+
+<div id="content">
+	<%=render "top" %>
+        <div class="row-fluid">       
+          <div class="span12 padding_consigne_describe">
+		 <div class="pagination-centered">
+		 <%=image_tag @question.describe_image.url(:small),:id=>"questionImg", :class => "border" %>
+		 </div>
+		   <div id="imgSlots" class="pagination-centered padding_consigne_describe">
+		   </div>
+		 </div>
+		 </div>
+		 <div class="pagination-centered">
+		 <div class="inline">  
+		  <div id="imgPile-sujet" class="pagination-centered imgPile">
+		  
+          </div>
+		  <div id="imgPile-verbe" class="pagination-centered imgPile">
+		  
+          </div>
+          <div id="imgPile-complement" class="pagination-centered imgPile">
+		  
+          </div>
+       </div>
+  
+   </div>
+
+
+ <script type="text/javascript"  charset="utf-8">
+var correctImgs = 0;
+$.preload( '/assets/mak_bon_describe.png' 
+	);
+$( init );
+
+function init() {
+
+  
+  
+  <% @sujets.each do |sujet| %>
+   $('<div class="dragImg"> <div class="border white sizeDivVeryEasy"> <%=image_tag sujet.picto.url(:small)  %> <p> <%=sujet.name%></p></div> </div>').data('id', '<%= sujet.id.to_s%>').attr('class', 'sujet').appendTo( '#imgPile-sujet' ).draggable( {
+      containment: '#content',
+      stack: '#imgPile-sujet div',
+      revert: returnToYourPlace,
+	  drag: handleImgDrag
+    } );
+    <% end %>
+    
+    
+  <% @verbes.each do |verbe| %>
+   $('<div class="dragImg"> <div class="border white sizeDivVeryEasy"> <%=image_tag verbe.picto.url(:small) %> <p> <%=verbe.name%></p></div> </div>').data('id', '<%= verbe.id.to_s%>').attr('class', 'verbe').appendTo( '#imgPile-verbe' ).draggable( {
+      containment: '#content',
+      stack: '#imgPile-verbe div',
+      revert: returnToYourPlace,
+	  drag: handleImgDrag
+    } );
+    <% end %>
+    
+    
+  <% @complements.each do |complement| %>
+   $('<div class="dragImg"> <div class="border white sizeDivVeryEasy"> <%=image_tag complement.picto.url(:small) %> <p> <%=complement.name%></p></div> </div>').data('id', '<%= complement.id.to_s%>').attr('class', 'complement').appendTo( '#imgPile-complement' ).draggable( {
+      containment: '#content',
+      stack: '#imgPile-complement div',
+      revert: returnToYourPlace,
+	  drag: handleImgDrag
+    } );
+    <% end %>
+  
+  
+  
+  <% array = ["sujet", "verbe","complement"] %>
+  <% i = 0 %>
+  
+  <% @pictogrammes.each do |pictogramme| %>
+    $('<div>' + '</div>').data( 'id', '<%= pictogramme.id %>' ).attr( 'class', '<%= array[i] %>').appendTo( '#imgSlots' ).droppable( {
+      accept: '.<%= array[i] %>',
+      hoverClass: 'hovered',
+      drop: handleImgDrop
+    } );
+	    <% i += 1 %>
+    <% end %>
+  
+
+}
+
+function returnToYourPlace(event, ui) {
+                        $(this).data("uiDraggable").originalPosition = {
+                            top : 0,
+                            left : 0
+                        };
+                        return !event;
+                    }
+function handleImgDrop( event, ui ) {
+		
+        ui.draggable.addClass('dropped');
+        ui.draggable.data('droppedin', $(this));
+        $(this).droppable('disable');
+        
+        var slotId = $(this).data('id')
+		var imgId = ui.draggable.data('id')
+		
+		
+		if(slotId == imgId)
+		{
+			 ui.draggable.data('correct', $(this));
+			correctImgs++
+		}
+        
+        
+        if(correctImgs == <%= @pictogrammes.size%>)
+        {
+			$("#questionImg").fadeOut(250,function(){
+			$("#questionImg").attr({'src':'/assets/mak_bon_describe.png'});
+			$("#questionImg").fadeIn(250);});
+			setTimeout("reloadpage();",750)
+        }
+		
+}
+
+function handleImgDrag( event, ui ) {
+   if ($(this).data('droppedin')) {
+            $(this).data('droppedin').droppable('enable');
+            $(this).data('droppedin', null)
+            $(this).removeClass('dropped')
+            
+            if ($(this).data('correct'))
+            {
+            	 $(this).data('correct', null)
+            	 correctImgs = correctImgs - 1
+            }
+         
+        }
+
+}
+function reloadpage()
+	{
+		Turbolinks.visit('');
+	}
+
+
+    </script>

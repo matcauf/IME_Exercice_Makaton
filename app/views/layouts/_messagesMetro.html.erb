@@ -1,0 +1,28 @@
+
+<% flash.each do |name, msg| %>
+<% if name == :notice%>
+	<% info = "Succès" %>
+	<% color = "green" %>
+	<% icon = "icon-info-4"%>
+	<% elsif name == :alert %>
+	<% info = "Alerte" %>
+	<% color = "red" %>
+	<% icon = "icon-warning-3" %>
+	<% else %>
+	<% info = name %>
+	<% color = "blue" %>
+	<% icon = "icon-info-4"%>
+	<% end %>
+<div id="alerts-container" >
+         <div id="toast-example1" class="toast toasttext01 fade in bg-color-<%= color%>">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            <div class="pull-left">
+               <div class="toast-object <%= icon %>"></div>
+            </div>
+            <div class="toast-body">
+               <h4 class="toast-heading"><%=info%></h4>
+               <p><%= msg %></p>
+            </div>
+         </div>
+      </div>
+      <% end %>

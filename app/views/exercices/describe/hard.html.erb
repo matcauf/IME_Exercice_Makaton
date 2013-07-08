@@ -1,0 +1,105 @@
+
+<div id="content">
+        <div class="row-fluid">
+		
+		
+          <div id="imgPile" class="span4 hero-unit pagination-centered">
+		  
+          </div>
+
+          <div class="span8 padding">
+		 <div class="pagination-centered">
+		 <%=image_tag @question.describe_image.url(:small),:id=>"questionImg", :class => "resizeAndBorder" %>
+		 </div>
+		   <div id="imgSlots" class="pagination-centered padding">
+		   </div>
+        </div>
+  </div>
+   </div>
+
+
+ <script type="text/javascript">
+var correctImgs = 0;
+$( init );
+
+function init() {
+
+  
+  <% @answers.each do |answer| %>
+   $('<div>' + '<%=image_tag answer.picto_url, :class => "resizeAndBorder" %>' + '</div>').data('id', '<%= answer.id.to_s%>').attr('class', '<%= answer.grammar_pictogramme.name %>').appendTo( '#imgPile' ).draggable( {
+      containment: '#content',
+      stack: '#imgPile div',
+      revert: returnToYourPlace,
+	  drag: handleImgDrag
+    } );
+    <% end %>
+  
+
+
+  <% @pictogrammes.each do |pictogramme| %>
+    $('<div>' + '</div>').data( 'id', '<%= pictogramme.id %>' ).attr( 'class', '<%= pictogramme.grammar_pictogramme.name %>').appendTo( '#imgSlots' ).droppable( {
+      accept: '.<%= pictogramme.grammar_pictogramme.name %>',
+      hoverClass: 'hovered',
+      drop: handleImgDrop
+    } );
+    <% end %>
+  
+
+}
+
+function returnToYourPlace(event, ui) {
+                        $(this).data("uiDraggable").originalPosition = {
+                            top : 0,
+                            left : 0
+                        };
+                        return !event;
+                    }
+function handleImgDrop( event, ui ) {
+		
+        ui.draggable.addClass('dropped');
+        ui.draggable.data('droppedin', $(this));
+        $(this).droppable('disable');
+        
+        var slotId = $(this).data('id')
+		var imgId = ui.draggable.data('id')
+		
+		
+		if(slotId == imgId)
+		{
+			 ui.draggable.data('correct', $(this));
+			correctImgs++
+		}
+        
+        
+        if(correctImgs == <%= @pictogrammes.size%>)
+        {
+			$("#questionImg").fadeOut(250,function(){
+			$("#questionImg").attr({'src':'<%= asset_path 'mak-content.jpg' %>'});
+			$("#questionImg").fadeIn(250);});
+			setTimeout("reloadpage();",750)
+        }
+		
+}
+
+function handleImgDrag( event, ui ) {
+   if ($(this).data('droppedin')) {
+            $(this).data('droppedin').droppable('enable');
+            $(this).data('droppedin', null)
+            $(this).removeClass('dropped')
+            
+            if ($(this).data('correct'))
+            {
+            	 $(this).data('correct', null)
+            	 correctImgs = correctImgs - 1
+            }
+         
+        }
+
+}
+function reloadpage()
+	{
+		Turbolinks.visit('');
+	}
+
+
+    </script>

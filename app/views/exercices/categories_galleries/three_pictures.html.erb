@@ -1,0 +1,38 @@
+<% content_for :title, @title %>
+<%= render 'sound'%>
+
+<div class ="container">
+	<%= render 'top'%>
+<div class="pagination-centered padding">
+	 <%= image_tag @question , :class => "size border" %>
+	</div>
+		
+         <div id="pictures_row" class="row pagination-centered">
+          	
+        <div class="span12 padding pagination-centered">
+          	<% if @true_answer_number == 1 %>
+          	 <%= image_tag @true_answer, :class => "true left size border" %>
+          	<% else %>
+          	 <%= image_tag @answers[0],  :class => "false left size border"%>
+          	<% end %>
+           	<% if @true_answer_number == 2 %>
+          	 <%= image_tag @true_answer, :class => "true center size border" %>
+          	<% elsif @true_answer_number == 1 %>
+          	 <%= image_tag @answers[0],  :class => "false center size border"%>
+          	 <% else %>
+          	 <%= image_tag @answers[1],  :class => "false center size border"%>
+          	<% end %>
+          	<% if @true_answer_number == 3 %>
+          	 <%= image_tag @true_answer, :class => "true right size border" %>
+          	<% else %>
+          	 <%= image_tag @answers[1], :class => "false right size border"%>
+          	<% end %>
+          	</div>
+          
+          	</div>
+</div>
+
+<%= render 'script_true_false'%>
+        
+
+

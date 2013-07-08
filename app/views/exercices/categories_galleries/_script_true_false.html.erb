@@ -1,0 +1,85 @@
+<script>
+var user_id = null;
+<% if user_signed_in? %>
+user_id = <%= current_user.id%>;
+<% end %>
+var gallery_id = <%= @gallery.id %>;
+var exercice_type = '<%= @exercice_type %>';
+	$.preload( '/assets/mak-bon.jpg',
+  		'/assets/mak-mauvais.jpg' 
+	);
+ 	var reinit = $('#pictures_row').clone();
+	var answer = true;
+	var sound = document.getElementById("true_sound");
+	live();
+	function live()
+	{
+	$(".true").click(function()
+		{
+			var classes = $(this).attr('class');
+			if( $(this).attr('src') != '/assets/mak-bon.jpg') {
+			$(this).fadeOut(250,function(){
+			$(this).replaceWith(('<img  alt="mak-bon.jpg" src="/assets/mak-bon.jpg" class="'+ $(this).attr('class') +'"/>'));		
+			$(this).fadeIn(250);});
+			if (user_id!=null)
+			{
+			if (answer)
+			{ 
+			$.post('/user_stats/score?user_id=' + user_id + '&gallery_id=' + gallery_id  + '&type=' + exercice_type + '&answer=true');
+			}
+			else 
+			{
+			$.post('/user_stats/score?user_id=' + user_id + '&gallery_id=' + gallery_id  + '&type=' + exercice_type + '&answer=false')
+			}
+			}
+			if ( sound != null )
+			{
+			sound.play();
+			var duration = parseInt(sound.duration) *1000; 
+			setTimeout("reload_page();", duration + 250);
+			}
+			else
+			{
+				setTimeout("reload_page();", 750);
+				
+			}
+			
+			
+			}
+		}
+	);
+	
+	
+	$(".false").click(function()
+		{
+			answer = false;
+			if( $(this).attr('src') != '/assets/mak-mauvais.jpg') {
+			$(this).fadeOut(250,function(){
+			$(this).replaceWith(('<img  alt="mak-bon.jpg" src="/assets/mak-mauvais.jpg" class="'+ $(this).attr('class') +'"/>'));				
+			$(this).fadeIn(250);});
+			}
+		}
+	);
+	
+	$("#repeat").click(function()
+	{
+		reset();
+	});
+	
+}
+	function reload_page()
+	{
+		Turbolinks.visit('');
+	}
+	 
+	function reset()
+	{
+			$("#pictures_row").replaceWith(reinit);
+			answer = true;
+			reinit = $('#pictures_row').clone();
+			live();
+	}
+	
+	
+	
+</script>

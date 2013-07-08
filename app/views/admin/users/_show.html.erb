@@ -1,0 +1,138 @@
+<dic class="container">
+<div id="dynamicChart">
+</div>
+<div>
+	<div id="twoPictures">
+		<h2>Quiz 2 images</h2>
+		<svg ></svg>
+		</div>
+		<div id="threePictures" >
+			<h2>Quiz 3 images</h2>
+			<svg style="height: 500px;"></svg>
+		</div>
+	
+	</div>
+	</div>
+	<script>
+var dynamic_chart;
+var click = true;
+var char_tittle_id = "currentFocus"
+var userID = <%= @user.id %>;
+nv.addGraph(function() {  
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .staggerLabels(true)
+      //.staggerLabels(historicalBarChart[0].values.length > 8)
+      .tooltips(false)
+      .showValues(true)
+	
+  dynamic_chart = chart;
+
+  nv.utils.windowResize(chart.update);
+   
+  return chart;
+});
+nv.addGraph(function() {  
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .staggerLabels(true)
+      //.staggerLabels(historicalBarChart[0].values.length > 8)
+      .tooltips(false)
+      .showValues(true)
+	  
+	 $.getJSON('/users/pictures_categories_stats?type=two_pictures&id='+ userID  ,function(data){
+	d3.select('#twoPictures svg')
+      .datum(data )
+    .transition().duration(500)
+      .call(chart);
+       });
+  
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+nv.addGraph(function() {  
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .staggerLabels(true)
+      //.staggerLabels(historicalBarChart[0].values.length > 8)
+      .tooltips(false)
+      .showValues(true)
+	  
+	  
+  $.getJSON('/users/pictures_categories_stats?type=three_pictures&id=' + userID ,function(data){
+	d3.select('#threePictures svg')
+      .datum(data )
+    .transition().duration(500)
+      .call(chart);
+      });
+
+  nv.utils.windowResize(chart.update);
+   
+
+  return chart;
+});
+function changedata(d,json){
+	  if(fisrtClick(click,"dynamicChart",char_tittle_id))
+	  {
+	  	click = false;
+	  }
+	   if(json[d.series].key == "global-two_pictures") 
+	  {
+	  	updateChart('/users/pictures_galleries_stats?type=two_pictures&id='+ userID +'&category_name=' + d.label, dynamic_chart,"dynamicChart");
+	  	window.scrollTo(0,0);
+	  	changeText(char_tittle_id,d.label);
+	  } 
+	  else if(json[d.series].key == "global-three_pictures") 
+	  {
+	  	 updateChart('/users/pictures_galleries_stats?type=three_pictures&id='+ userID +'&category_name=' + d.label, dynamic_chart,"dynamicChart");
+	  	 window.scrollTo(0,0);
+	  	 changeText(char_tittle_id,d.label);
+	  } 
+	 else
+	 {
+	 var serie = json[d.series].key.split("-");
+	 if(serie[0] == "gallerie")
+	 {
+	 	updateChart('/users/pictures_exercices_stats?type=' + serie[2] +'&id='+ userID + '&category_name='+ serie[1]+ '&gallery_name=' + d.label, dynamic_chart,"dynamicChart");
+	 	changeText(char_tittle_id,d.label);
+	 }
+	  }
+
+}
+
+function fisrtClick(click, div_id, title_id)
+{
+	if(click)
+	{
+		
+		document.getElementById(div_id).innerHTML = "<h2 id='"+ title_id +"'></h2>\
+  		<svg style='height: 500px; '></svg>";
+		return true;
+	}
+	return false;
+}
+
+function updateChart(jsonurl, chart, chart_id)
+{
+	$.getJSON(jsonurl,function(data){
+	d3.select('#'+ chart_id +' svg')
+      .datum(data )
+    .transition().duration(500)
+      .call(chart);
+       });
+	
+}
+
+function changeText(id,content)
+{
+	$('#' + id).text(content);
+	$('#' + id).fadeIn('slow');
+	
+}
+</script>

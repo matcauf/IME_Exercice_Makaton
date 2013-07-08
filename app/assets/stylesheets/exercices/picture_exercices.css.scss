@@ -1,0 +1,87 @@
+// Place all the styles related to the exercices/photo controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$itemwitdh: 150px;
+$itemheight: auto; /* dimention (carrée) des questions et reponses */
+$padding: 75px;/* distance entre la question et les images */
+$response_position: 75px;/*distance entre les images*/
+$consigne_width: 300px;
+.border {
+  
+
+ border-width:5px;
+ border-style:solid;
+ border-color:black;
+ -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+ 
+}
+
+img.size{
+  width: $itemwitdh;
+ height: $itemheight;
+}
+
+div.padding {
+  padding-top: $padding;
+}
+
+span.size {
+ display: inline-block;
+ width: $itemwitdh;
+ height: $itemheight;
+ font-size: 25px;
+ font-weight:bold;
+ line-height:$itemheight - 10; /* centrage vertical */
+ text-align:center; /* centrage horizontal */
+}
+
+
+
+.right {
+margin-left: $response_position; 
+}
+
+.left {
+margin-right: $response_position; 
+}
+
+
+
+div.reset-button{
+  text-align:right;
+}
+
+.consigne{
+  max-width:$consigne_width;
+}
+@media only screen and (max-width: 720px) {
+
+  span.size  { font-size: 1em; padding: 5px;width: $itemwitdh/2;
+ height: $itemheight/2; }
+ img.resizeAndBorder  {max-width: $itemwitdh/2;
+ height: $itemheight/2; }
+.consigne{
+  max-width:$consigne_width/2 ;
+}
+}
+@media only screen and (max-width: 480px) {
+
+  span.size  { font-size: 0.8em; padding: 4px;}
+img.size  { max-width: $itemwitdh/3;
+ height: $itemheight/3; }
+ .consigne{
+ width:$consigne_width/3 ;
+}
+}
+
+@media only screen and (max-width: 420px) {
+
+  span.size  { font-size: 0.8em; padding: 4px;}
+img.size  { max-width: $itemwitdh/4;
+ height: $itemheight/4; }
+ .consigne{
+  width:$consigne_width/4 ;
+}
+}

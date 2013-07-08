@@ -1,0 +1,78 @@
+<h1>Gestion des catégories et sous catégorie</h1>
+<div class ="row-fluid">
+<div class = "span6">
+	<%= simple_form_for Category.new do |f|%>
+	<%= f.input :name, label: 'nom d une categorie'%>
+	<%= f.button :submit, 'Creer une Categorie'%>
+	<%end%>
+</div>
+
+<div class = "span6">
+	<%= simple_form_for Gallery.new do |f|%>
+	<%= f.collection_select :category_id, Category.all, :id, :name,  :prompt => 'Choisir une categorie', :required => true%>
+	<%= f.association :pictogramme, :collection => Pictogramme.all(:order => 'name'), :prompt => 'Choisir un pictogramme existant', :required => true%>
+	<%= f.button :submit, 'creer une Sous-Categorie' %>
+	<%end%>
+</div>
+</div>
+<h2>Catégories enregistrées</h2>
+<div id="accordion2" class="accordion"></div>
+<table class ="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Nom</th>
+			<th>derniére mise à jour</th>
+			<th></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @categories.each do |category| %>
+		<tr class="highlight">
+			<td width="20">
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a href=<%= '#collapse_' + category.name%> data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle"> <i id="toggle" class="icon-plus"></i> </a>
+				</div>
+			</div></td>
+			<td><%= link_to category.name,category%></td>
+			<td><%= category.updated_at.to_date%></td>
+			<td></td>
+			<td> <%= link_to 'Editer', edit_category_path(category) %> |
+			<%= link_to 'Détruire',  category, confirm: 'Etes-vous sure?', method: :delete %> </td>
+		</tr>
+		<tr>
+			<td class="more"></td><td colspan="5" class="more">
+			<div class="accordion-body collapse" id=<%= 'collapse_' + category.name%> style="height: 0px;">
+				<div class="accordion-inner">
+					<h4>Sous categories</h4>
+					<table class ="table">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>derniére mise à jour</th>
+								<th></th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% for gallery in category.galleries%>
+							<tr>
+								<td><%= link_to gallery.pictogramme.name, gallery%> </td>
+								<td> <%= gallery.updated_at.to_date%> </td>
+								<td></td>
+								<td> <%= link_to 'Editer', edit_gallery_path(gallery) %> |
+								<%= link_to 'Détruire',  gallery, confirm: 'Etes-vous sure?', method: :delete %> </td>
+							</tr>
+
+							<%end%>
+						</tbody>
+					</table>
+
+				</div>
+			</div></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>

@@ -1,0 +1,5 @@
+<%= semantic_form_for @user, :url => "/admin/users/assign_role", :html => { :method => :post } do |f| %>
+   <%= f.hidden_field :id, :value => @user.id%>
+   <%= f.input :roles,:collection => Hash[Role.all.map{|b| [t(b.name),b.id]}]%>
+  <%= f.actions %>
+<% end %>

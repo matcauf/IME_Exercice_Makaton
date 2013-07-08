@@ -1,0 +1,42 @@
+<div id="nav-bar" class="">
+	<div class="pull-left">
+		<div id="header-container">
+			<h1><%= content_tag :a, "Makassis", :href => root_path %>
+			<% if  yield(:title) == ""%>
+			<small style="font-size: 16px;">Exercices sûr la méthode Makaton</small>
+			<%else%>
+				<small style="font-size: 16px;"><%= yield(:title)%></small>
+			<% end %>
+			</h1>
+		</div>
+	</div>
+	<div class="pull-right">
+            <div id="top-info" class="pull-right">
+            <% if user_signed_in? %>
+			
+				<%= link_to destroy_user_session_path, :method=>'delete',:class => "win-command pull-right" do%>
+				<span class="win-commandicon win-commandring icon-unlocked-2 "></span>
+			<% end %>
+			<%= link_to edit_user_registration_path, :class => "win-command pull-right" do%>
+				 <span class="win-commandicon win-commandring icon-cog-3"></span>
+			<% end %>
+			<% if current_user.has_role? :super_admin or current_user.has_role? :admin or current_user.has_role? :teacher %>
+			<%= link_to admin_root_path, :class => "win-command pull-right",  "data-no-turbolink" => true do%>
+			 <span class="win-commandicon win-commandring  icon-hammer"></span>
+			<% end %>
+				<% end %>
+			<%= link_to user_path(current_user), :id => "logged-user", :class => "win-command pull-right" do%>
+				 <span class="win-commandicon win-commandring icon-user"></span>
+			<% end %>
+            <div class="pull-left">
+               <h3><%= current_user.username.titleize%></h3>
+            </div>
+			<% else%>
+			<%= link_to new_user_session_path,:class => "win-command pull-right" do%>
+				<span class="win-commandicon win-commandring  icon-locked-2  "></span>
+			<% end %>
+			<% end %>
+           
+         </div>
+      </div>
+</div>

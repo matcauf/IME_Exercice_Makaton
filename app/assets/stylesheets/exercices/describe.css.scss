@@ -1,0 +1,180 @@
+
+$item_size: 130px;
+$img_slot_size: $item_size + 10;
+$img_size: $item_size - 36;
+$font-size:16px;
+$padding_top_describe: 30px;
+/* Individual imgs and slots */
+
+#imgSlots div {
+  width: $img_slot_size;
+  height: $img_slot_size;
+  border-width:5px;
+  border-style:solid;
+  border-color:black;
+  display:inline-block;
+  padding: 10px;
+  padding-top: 40px;
+  padding-bottom: 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: auto 20px 20px 20px;
+}
+
+/* Coulour piles of img*/
+.imgPile div {
+  display:inline-block;
+  vertical-align: middle;
+  border-radius: 10px;
+  margin: 5px 5px 0px 0px;
+
+}
+div #imgPile-sujet {
+  display:inline-block;
+   -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0% 2.5% 2.5% 0%;
+  background-color: yellow;
+}
+div #imgPile-verbe  {
+  display:inline-block;
+   -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0% 2.5% 2.5% 0%;
+  background: red;
+}
+div #imgPile-complement {
+  display:inline-block;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0% 0% 2.5% 0%;
+  background: blue;
+}
+
+.sizeDivVeryEasy, {
+  width: $item_size;
+  max-height: $item_size;
+}
+
+.sizeDivVeryEasy img {
+  max-width: $item_size;
+  max-height: $img_size;
+}
+.sizeDivVeryEasy p{
+  font-weight: bold;
+  font-size: $font-size;
+   line-height:100%;
+}
+
+.white {
+  background: white;
+}
+/* Individually coloured imgs */
+
+#imgSlots .determinant { background: white; }
+#imgSlots .verbe { background: red; }
+#imgSlots .sujet { background: yellow; }
+#imgSlots .complement { background: blue; }
+
+
+.padding_consigne_describe
+{
+ padding-top:$padding_top_describe;
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+#imgSlots div{ width: $item_size/2; 
+  height: $item_size/2;
+   padding: 5; }
+  
+ .sizeDivVeryEasy , img.dragImgEasy {width: $item_size*0.5;
+ height: $item_size*0.5; }
+.sizeDivVeryEasy img {
+  max-width: $item_size*0.5;
+  max-height: $img_size*0.5;
+}
+.sizeDivVeryEasy p{
+  font-size: $font-size*0.5;
+}
+}
+
+
+@media only screen and (max-width: 768px) {
+ [class*="span"].pull-right {
+        float: none;
+}
+[class*="span"].pull-left {
+        float: left;
+}
+  #imgSlots div{ width: $item_size/3; 
+  height: $item_size/3;
+   padding: 5; }
+  .sizeDivVeryEasy,  img.dragImgEasy{
+  width: $item_size/3;
+   max-height: $item_size/3;
+}
+.sizeDivVeryEasy img {
+  max-width: $item_size/3;
+  max-height: $img_size/3;
+}
+.sizeDivVeryEasy p{
+   font-size: $font-size/3;
+}
+}
+
+@media only screen and (max-width: 600px) {
+
+  #imgSlots div{ width: $item_size/4; 
+  height: $item_size/4;
+   padding: 5; }
+  .sizeDivVeryEasy {
+  width: $item_size/4;
+  height: $item_size/4;
+}
+.sizeDivVeryEasy img {
+  max-width: $item_size/4;
+  max-height: $img_size/4;
+}
+.sizeDivVeryEasy p{
+  font-size: $font-size/4;
+}
+}
+@media only screen and (max-width: 480px) {
+
+  #imgSlots div { width: $item_size/4; height: $item_size/4; padding: 3; }
+  .sizeDivVeryEasy{
+  width: $item_size/6;
+   max-height: $item_size/6;
+}
+.sizeDivVeryEasy img {
+  max-width: $item_size/6;
+  max-height: $img_size/6;
+}
+ .sizeDivVeryEasy p{
+  font-size: $font-size/6;
+}
+}
+
+@media only screen and (max-width: 380px) {
+
+  #imgSlots div{ width: $item_size/6; height: $item_size/6; padding:2; }
+  .sizeDivVeryEasy{
+  width: $item_size/8;
+   max-height: $item_size/8;
+  
+}
+
+.sizeDivVeryEasy img {
+  max-width: $item_size/8;
+  max-height: $img_size/8;
+}
+.sizeDivVeryEasy p{
+  font-size: $font-size/8;
+}
+}

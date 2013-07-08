@@ -1,0 +1,8 @@
+<div class = "row">
+<% pictogrammes.each do |pictogramme| %>
+<div class= "span2 ">
+<%= image_tag pictogramme.picto.url(:thumb)%>
+<p><%= pictogramme.name %></p>
+</div>
+<% end %>
+</div>

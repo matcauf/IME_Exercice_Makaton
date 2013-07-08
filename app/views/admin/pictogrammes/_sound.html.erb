@@ -1,0 +1,8 @@
+<% if pictogramme.sound? %>
+	<audio controls>
+        <source src="<%= pictogramme.sound.url(:ogg) %>" type="audio/ogg">
+        <source src="<%= pictogramme.sound.url(:original) %>" type="audio/mpeg">
+   votre navigateur ne supporte les fichiers audio
+</audio>
+<% end %>
+    

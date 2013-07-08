@@ -1,0 +1,6 @@
+fr:
+ formtastic:
+      actions:
+        create: "Créer un(e) %{model}"
+        update: "Modifier ce(tte) %{model}"
+        submit: "Enregistrer ce(tte) %{model}"

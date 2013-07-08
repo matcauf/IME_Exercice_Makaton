@@ -1,0 +1,31 @@
+<% content_for :title, "Quiz 2 images" %>
+<div class="metro panorama">
+	<div class="panorama-sections">
+		<div class="panorama-section tile-span-2">
+			<h2>Photos</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_blanc.png', :name => "Photo & Blanc", :exercice_controller => :two_white, :type => "photo2Whitephotos", :number => 2 }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_pareil.png', :name => "Photos Identiques",:exercice_controller => :two_identique, :type => "photo2IDphotos", :number => 2  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_photos.png', :name => "Photo & Photos", :exercice_controller => :two_different, :type => "photo2DIFphotos", :number => 2  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_mots.png', :name => "Photo & Mots", :exercice_controller =>  :two_different, :type => "photo2DIFwords", :number => 2  }%>
+			</div>
+		</div>
+		<div class="panorama-section tile-span-2">
+			<h2>Dessins</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama', :locals => { :image => 'mak_dessin_blanc.png', :name => "Dessin & Blanc", :exercice_controller => :two_white, :type => "dessin2Whitedessins", :number => 2  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_dessin_pareil.png', :name => "Dessins Identiques", :exercice_controller => :two_identique, :type => "dessin2IDdessins", :number => 2  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_dessin_photos.png', :name => "Photo & Dessin", :exercice_controller => :two_different, :type => "photo2DIFdessins", :number => 2  }%>
+			</div>
+		</div>
+		<div class="panorama-section tile-span-2">
+			<h2>Pictogrammes</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama', :locals => { :image => 'mak_pictogramme_blanc.png', :name => "Pictogramme & Blanc", :exercice_controller => :two_white, :type => "pictogramme2Whitepictogrammes", :number => 2  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_pictogramme_pareil.png', :name => "Pictogrammes Identiques", :exercice_controller => :two_identique, :type => "pictogramme2IDpictogrammes", :number => 2  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_pictogramme_photos.png', :name => "Photo & Pictogrammes", :exercice_controller => :two_different, :type => "photo2DIFpictogrammes", :number => 2  }%>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "arrow"%>

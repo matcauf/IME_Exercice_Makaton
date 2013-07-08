@@ -1,0 +1,28 @@
+<% content_for :title, "Quiz 3 images" %>
+<div class="metro panorama">
+	<div class="panorama-sections">
+		<div class="panorama-section tile-span-2">
+			<h2>Photos</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_pareil.png', :name => "Photos Identiques",:exercice_controller => :three_identique, :type => "photo3IDphotos", :number => 3  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_photos.png', :name => "Photo & Photos", :exercice_controller => :three_different, :type => "photo3DIFphotos", :number => 3  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_photo_mots.png', :name => "Photo & Mots", :exercice_controller =>  :three_different, :type => "photo3DIFwords", :number => 3  }%>
+			</div>
+		</div>
+		<div class="panorama-section tile-span-2">
+			<h2>Dessins</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama', :locals => { :image => 'mak_dessin_pareil.png', :name => "Dessins Identiques", :exercice_controller => :three_identique, :type => "dessin3IDdessins", :number => 3  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_dessin_photos.png', :name => "Photo & Dessin", :exercice_controller => :three_different, :type => "photo3DIFdessins", :number => 3  }%>
+			</div>
+		</div>
+		<div class="panorama-section tile-span-2">
+			<h2>Pictogrammes</h2>
+			<div class="tile-column-span-2">
+				<%= render partial: 'panorama', :locals => { :image => 'mak_pictogramme_pareil.png', :name => "Pictogrammes Identiques", :exercice_controller => :three_identique, :type => "pictogramme3IDpictogrammes", :number => 3  }%>
+				<%= render partial: 'panorama', :locals => { :image => 'mak_pictogramme_photos.png', :name => "Photo & Pictogrammes", :exercice_controller => :three_different, :type => "photo3DIFpictogrammes", :number => 3  }%>
+			</div>
+		</div>
+	</div>
+</div>
+  <%= render "arrow"%>

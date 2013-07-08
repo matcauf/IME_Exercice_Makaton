@@ -1,0 +1,20 @@
+fr:
+ user: "Utilisateur"
+ teacher: "Enseignant"
+ admin: "Administrateur"
+ super_admin: "Super administrateur" 
+ activerecord:
+    models:
+      describe_picture:
+        one: "Description"
+        other: "Description"
+      category:
+        one: "Catégorie"
+        other: "Catégories"
+      gallery:
+        one: "Sous-catégorie"
+        other: "Sous-catégories"
+      user: 
+        one: "Utilisateur"
+        other: "Utilisateurs"
+      

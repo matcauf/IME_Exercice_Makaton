@@ -1,0 +1,78 @@
+.metro .tile.square.image img {
+    max-width: 150px;
+    max-height: 130px;
+}
+img.sqaremetro {
+  width: 150px;
+}
+
+#nav-bar {
+    height: 54px;
+    width: 100%;
+}
+.win-commandicon {
+   color: #000;
+}
+.win-commandring, a:active .win-commandring, .win-commandring, button:active .win-commandring {
+   border-color: #000;
+}
+#panorama-scroll-prev,
+#panorama-scroll-next {
+   border-color: #000;
+   color: #000;
+}
+.panorama .panorama-sections h2 {
+    margin-left: 5px;
+    font-weight: 300;
+    color: rgb(79, 26, 203);
+    text-transform: none;
+}
+.metro .tile {
+    position: relative;
+    display: block;
+    float: left;
+    width: 150px;
+    height: 150px;
+    padding: 0px;
+    margin: 5px;
+    overflow: hidden;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    background-clip: padding-box;
+}
+
+a:hover, a:focus {
+    color: #4F1AFF;
+    text-decoration: none;
+}
+h1, h2 {
+	color: rgb(79, 26, 203);
+}
+#currentFocus{
+	text-transform:capitalize;
+}
+.metro .tile .mytext {
+    height: auto;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 18px;
+    text-align: left;
+}
+.metro .tile .textover-wrapper {
+    position: absolute;
+    bottom: 0px;
+    padding: 2px 20px;
+    background-color: inherit;
+    height: auto;
+}
+#alerts-container {
+    position: fixed;
+    top: 150px;
+    right: 5px;
+    padding: 0px;
+    z-index: 1100;
+}
