@@ -44,7 +44,6 @@ gem 'randumb'
 gem 'turbolinks'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
-gem "paperclip", "~> 3.0", :group => :development
 gem "paperclip", "~> 2.0", :group => :production
 gem 'activeadmin'
 gem "jquery-ui-rails"
