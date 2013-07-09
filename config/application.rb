@@ -69,6 +69,5 @@ module Makaton
     
     #no password on logs
     config.filter_parameters += [:password, :password_confirmation]
-    config.assets.initialize_on_precompile = false
   end
 end
