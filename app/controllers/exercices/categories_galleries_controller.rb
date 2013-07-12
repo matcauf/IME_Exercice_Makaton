@@ -131,7 +131,7 @@ class Exercices::CategoriesGalleriesController < ApplicationController
 
   def two_white
     initialize_exercice(params,2)
-    @answer = ActionController::Base.helpers.asset_path('white.png')
+    @answer = "white"
     case params[:type]
     when 'photo2Whitephotos'
       @question =  @gallery.pictures.where('image_type_id = 1').random.image.url(:small)

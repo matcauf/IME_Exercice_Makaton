@@ -3,7 +3,7 @@ class Picture < ActiveRecord::Base
   belongs_to :gallery
   belongs_to :image_type
   attr_accessible :image, :gallery_id,:image_type_id
-  has_attached_file :image, :styles => { :small => ["305x305>", :png ],:thumb => ["105x105>", :png ]},
+  has_attached_file :image, :styles => { :small => ["150x150>", :png ],:thumb => ["105x105>", :png ]},
                     :url => "/Upload/picture/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/Upload/picture/:id/:style/:basename.:extension"
  

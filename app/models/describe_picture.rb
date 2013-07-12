@@ -7,7 +7,7 @@ class DescribePicture < ActiveRecord::Base
   
   
   
-  has_attached_file :describe_image, :styles => { :small => ["305x305>", :png ],:thumb => ["105x105>", :png ]},
+  has_attached_file :describe_image, :styles => { :small => ["150x150>", :png ],:thumb => ["105x105>", :png ]},
                     :url => "/Upload/description_photo/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/Upload/description_photo/:id/:style/:basename.:extension"
  

@@ -18,7 +18,7 @@ module Exercices::CategoriesGalleriesHelper
     elsif params[:id_gallery] == 'false'
        @category = Category.find(params[:id_category])
       @gallery = valid_gallery @category
-      @title << " en aleatoire sur "+ @category.name
+      @title << " en aléatoire sur "+ @category.name
       
     else
        @category = Category.find(params[:id_category])

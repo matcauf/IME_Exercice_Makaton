@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :username,:email, :password, :password_confirmation, :remember_me, :last
   
   validates_presence_of :username
+  validates_presence_of :password
   validates_uniqueness_of :username, :case_sensitive => false
   
   before_create :assign_role

@@ -71,8 +71,12 @@ h1, h2 {
 }
 #alerts-container {
     position: fixed;
-    top: 150px;
+    top: 800px;
     right: 5px;
     padding: 0px;
     z-index: 1100;
+}
+
+.toast {
+	border: none;
 }

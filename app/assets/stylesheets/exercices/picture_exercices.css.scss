@@ -19,8 +19,8 @@ $consigne_width: 300px;
 }
 
 img.size{
-  width: $itemwitdh;
- height: $itemheight;
+  max-width: $itemwitdh;
+ max-height: $itemheight;
 }
 
 div.padding {
@@ -30,15 +30,17 @@ div.padding {
 span.size {
  display: inline-block;
  width: $itemwitdh;
- height: $itemheight;
+ height: $itemwitdh;
  font-size: 25px;
  font-weight:bold;
- line-height:$itemheight - 10; /* centrage vertical */
+ line-height:$itemwitdh - 10; /* centrage vertical */
  text-align:center; /* centrage horizontal */
 }
 
 
-
+.white {
+  color: white;
+}
 .right {
 margin-left: $response_position; 
 }
@@ -60,8 +62,8 @@ div.reset-button{
 
   span.size  { font-size: 1em; padding: 5px;width: $itemwitdh/2;
  height: $itemheight/2; }
- img.resizeAndBorder  {max-width: $itemwitdh/2;
- height: $itemheight/2; }
+ img.size  {max-width: $itemwitdh/2;
+ max-height: $itemheight/2; }
 .consigne{
   max-width:$consigne_width/2 ;
 }
@@ -70,7 +72,7 @@ div.reset-button{
 
   span.size  { font-size: 0.8em; padding: 4px;}
 img.size  { max-width: $itemwitdh/3;
- height: $itemheight/3; }
+ max-height: $itemheight/3; }
  .consigne{
  width:$consigne_width/3 ;
 }
@@ -80,7 +82,7 @@ img.size  { max-width: $itemwitdh/3;
 
   span.size  { font-size: 0.8em; padding: 4px;}
 img.size  { max-width: $itemwitdh/4;
- height: $itemheight/4; }
+ max-height: $itemheight/4; }
  .consigne{
   width:$consigne_width/4 ;
 }
