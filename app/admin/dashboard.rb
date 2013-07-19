@@ -16,7 +16,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do 
         panel " Statistiques" do
           div do
-            "Utilisateurs " + User.count.to_s
+            "Utilisateurs: " + User.count.to_s
           end
           div do
             "Pictogrammes: " + Pictogramme.count.to_s

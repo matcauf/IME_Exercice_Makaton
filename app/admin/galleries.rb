@@ -20,4 +20,12 @@ ActiveAdmin.register Gallery do
     render "show"
   end
   
+  form :title => "Création d'une sous-catégorie" do |f|
+     f.inputs "Sous-catégorie" do
+    f.input :category, :label => "Catégorie", :collection => Category.order('name ASC')
+    f.input :pictogramme, :collection => Pictogramme.order('name ASC')
+    end
+    f.actions
+  end
+  
 end

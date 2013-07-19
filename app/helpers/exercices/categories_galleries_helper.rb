@@ -6,10 +6,10 @@ module Exercices::CategoriesGalleriesHelper
     @answers = []
     @title = exercice_name  @exercice_type
     if params[:id_gallery] == 'false' && params[:id_category] == 'false'
-      random_galleries = valid_galleries.sample(answer.to_i)
+      random_galleries = valid_galleries answer.to_i
       @gallery= random_galleries.shift
       @category = @gallery.category
-      @title << " toutes categories en aléatoire"
+      @title << " toutes catégories en aléatoire"
       if(answer.to_i > 2)       
         return random_galleries
       else
@@ -23,32 +23,27 @@ module Exercices::CategoriesGalleriesHelper
     else
        @category = Category.find(params[:id_category])
       @gallery = Gallery.find(params[:id_gallery])
-         @title << " sur "+ @gallery.pictogramme.name + " de categorie " + @category.name
+         @title << " sur "+ @gallery.pictogramme.name + " de catégorie " + @category.name
     end 
    
     
     if answer.to_i  > 2
-      @category.galleries.where(' galleries.id != ' + @gallery.id.to_s).random(answer - 1)
+      @category.galleries.joins(:image_types).group("galleries.id").having("count(case image_types.name when 'photo' then 1 else null end ) >=2 
+    AND count(case image_types.name when 'dessin' then 1 else null end) >=1").where(' galleries.id != ' + @gallery.id.to_s).random(answer - 1)
     else
-       @category.galleries.where(' galleries.id != ' + @gallery.id.to_s).random
+       @category.galleries.joins(:image_types).group("galleries.id").having("count(case image_types.name when 'photo' then 1 else null end ) >=2 
+    AND count(case image_types.name when 'dessin' then 1 else null end) >=1").where(' galleries.id != ' + @gallery.id.to_s).random
      end
   end
   
-  def valid_galleries
-    Gallery.find(:all,
-    :group => "galleries.id",
-    :joins => :image_types,
-    :having => "count(case image_types.name when 'photo' then 1 else null end ) >=2 
-    AND count(case image_types.name when 'dessin' then 1 else null end) >=1")
-
+  def valid_galleries gallery_numbers
+    Gallery.joins(:image_types).group("galleries.id").having("count(case image_types.name when 'photo' then 1 else null end ) >=2 
+    AND count(case image_types.name when 'dessin' then 1 else null end) >=1").random(gallery_numbers)
   end
   
   def valid_gallery category
-    category.galleries.find(:all,
-       :joins => :image_types,
-       :group => "galleries.id",
-        :having => "count(case image_types.name when 'photo' then 1 else null end ) >=2 
-    AND count(case image_types.name when 'dessin' then 1 else null end) >=1").sample
+    category.galleries.joins(:image_types).group("galleries.id").having("count(case image_types.name when 'photo' then 1 else null end ) >=2 
+    AND count(case image_types.name when 'dessin' then 1 else null end) >=1").random
 
   end
   

@@ -11,6 +11,9 @@ ActiveAdmin.register User do
   filter :last_sign_in_at, :label => "Dernière connexion"
   filter :created_at, :label => "Date de création"
 
+batch_action :destroy, :if => proc{can?(:destroy, User)} do |user|
+  redirect_to admin_users_path, :alert => "Vous ne pouvez pas suprimer ces Utilisateurs l'un d'entre eux a un rang supérieur au votre"
+end
   collection_action :assign_role, :method => :post
   member_action :change_role do
     @user = User.find(params[:id])

@@ -32,4 +32,11 @@ ActiveAdmin.register Category do
         end
       end
   end
+  
+  form do |f|
+    f.inputs "Categorie" do
+        f.input :name, :label => "Nom"
+    end
+    f.actions
+end
 end

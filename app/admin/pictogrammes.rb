@@ -40,6 +40,7 @@ ActiveAdmin.register Pictogramme do
         row :son do
           render :partial => "sound", :locals => { :pictogramme => pictogramme }
         end
+        
       end
   end
   

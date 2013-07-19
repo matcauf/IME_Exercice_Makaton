@@ -4,11 +4,6 @@ class PictogrammesController < ApplicationController
   # GET /pictogrammes
   # GET /pictogrammes.json
   def index
-    if params[:q]!= nil
-    #if char 3 is blanck delete begin of char
-    params[:q] = params[:q][3..-1] if params[:q][2] == " "
-    params[:q] = params[:q][4..-1] if params[:q][3] == " "
-    end
     @pictogrammes = Pictogramme.where("name like ?", "%#{params[:q]}%")
    respond_to do |format|
     format.html

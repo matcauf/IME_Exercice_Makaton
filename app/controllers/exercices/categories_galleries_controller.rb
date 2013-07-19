@@ -113,7 +113,6 @@ class Exercices::CategoriesGalleriesController < ApplicationController
       @question =  @gallery.pictures.where('image_type_id = 1').random.image.url(:small)
       @true_answer = @question
       @answer = answer_gall.pictures.where('image_type_id = 1').random.image.url(:small)
-
     when 'dessin2IDdessins'
       @question =  @gallery.pictures.where('image_type_id = 2').random.image.url(:small)
       @true_answer = @question

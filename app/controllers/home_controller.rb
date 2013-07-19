@@ -1,6 +1,7 @@
 
 #encoding: utf-8
 class HomeController < ApplicationController
+  #for exercise names
   include Exercices::CategoriesGalleriesHelper
   def index
   @pages = Page.order("position ASC")

@@ -32,7 +32,7 @@ ActiveAdmin.register DescribePicture do
     f.inputs "Description" do
         f.semantic_errors *f.object.errors.keys
         f.input :describe_image ,:label => "image", :as => :file, :input_html => {:accept => "image/*" }, :hint => f.template.image_tag(f.object.describe_image.url(:thumb))
-        f.input :pictogramme_tokens,:label => "Sence de l'image", :input_html => { :id => "describe_picture_pictogramme_tokens" }
+        f.input :pictogramme_tokens,:label => "Sens de l'image", :input_html => { :id => "describe_picture_pictogramme_tokens" }
     end
      f.actions
   end
