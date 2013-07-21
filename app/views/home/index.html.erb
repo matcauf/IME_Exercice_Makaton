@@ -4,9 +4,9 @@
                         <h2>Informations</h2>
                         <div class="tile-column-span-2">
           					<% @pages.each do |page| %>
-          					<%= link_to (page.permalink), :class =>  "tile wide imagetext bg-color-" + COLOURS.sample do %>
+          					<%= link_to (page.permalink), :class =>  "tile wide imagetext bg-color-" + COLORS.sample do %>
           					<div class ="image-wrapper">
-          						<%= content_tag :span, :class => "icon" + page.icon do %>
+          						<%= content_tag :span, :class => "icon " + page.icon do %>
           						<% end %>
           					</div>
           					<div class ="mytext">
@@ -32,7 +32,7 @@
                            	<div class="tile wide image">
                              <%= image_tag asset_path 'mak_2_images.png' %>
                             </div>
-                            <%= content_tag :div, :class => "tile wide text bg-color-" + COLOURS.sample do %>
+                            <%= content_tag :div, :class => "tile wide text bg-color-" + COLORS.sample do %>
                               	<div class="text-header">2 images</div>
                                  <div class="text4">Reconnaissance d'objets similaires parmi 2 choix.</div>
                               <% end %>
@@ -41,7 +41,7 @@
                            	<div class="tile wide image">
                              <%= image_tag asset_path 'mak_3_images.png' %>
                             </div>
-                               <%= content_tag :div, :class => "tile wide text bg-color-" + COLOURS.sample do %>
+                               <%= content_tag :div, :class => "tile wide text bg-color-" + COLORS.sample do %>
                               	<div class="text-header">3 images</div>
                                  <div class="text4">Reconnaissance d'objets similaires parmi 3 choix.</div>
                               <% end %>
@@ -58,7 +58,7 @@
                            	<div class="tile wide image">
                              <%= image_tag asset_path 'mak_decris_image_simple.png' %>
                             </div>
-                               <%= content_tag :div, :class => "tile wide text bg-color-" + COLOURS.sample do %>
+                               <%= content_tag :div, :class => "tile wide text bg-color-" + COLORS.sample do %>
                               	<div class="text-header">Simple</div>
                                  <div class="text4">L'éléve décrit l'image avec l'aide de pictogrammes. Les 9 pictogrammmes proposés sont triés par sujets, actions et complements.</div>
                               <% end %>
@@ -67,7 +67,7 @@
                            	<div class="tile wide image">
                              <%= image_tag asset_path 'mak_decris_image_dure.png' %>
                             </div>
-                                <%= content_tag :div, :class => "tile wide text bg-color-" + COLOURS.sample do %>
+                                <%= content_tag :div, :class => "tile wide text bg-color-" + COLORS.sample do %>
                               	<div class="text-header">Dure</div>
                                  <div class="text4">L'éléve décrit l'image avec l'aide de pictogrammes. Les 10 pictogrammmes proposés ne sont pas triés.</div>
                               <% end %>

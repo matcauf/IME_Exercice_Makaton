@@ -1,2 +1,2 @@
 
-COLOURS = ["blue","blueDark","darken","gray","grayLight","green","greenDark","orange","pink","purple","red","yellow"]
+COLORS = ["blue","blueDark","darken","gray","grayLight","green","greenDark","orange","pink","purple","red","yellow"]
