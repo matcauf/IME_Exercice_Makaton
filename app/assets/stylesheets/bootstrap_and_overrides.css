@@ -3,9 +3,12 @@
     max-height: 130px;
 }
 img.sqaremetro {
-  width: 150px;
+  max-width: 150px;
 }
-
+.metro
+.tile.square.image{
+	text-align:center;
+}
 #nav-bar {
     height: 54px;
     width: 100%;

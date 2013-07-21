@@ -4,7 +4,10 @@ ActiveAdmin.register Category do
   
   filter :name, :label => "Nom"
   filter :created_at, :label => "date de création"
-   
+   action_item do
+     link_to "Créer une sous-Catégorie", new_admin_gallery_path
+   end
+    
     
    index :title => "Catégories" do
     selectable_column
@@ -16,6 +19,9 @@ ActiveAdmin.register Category do
       if !galleries.nil?
         render :partial => "galleries", :locals => { :galleries => galleries }
       end
+    end
+    column "" do |category|
+      link_to "associer une sous-catégorie", new_admin_gallery_path({:category_id => category.id})
     end
     default_actions
   end

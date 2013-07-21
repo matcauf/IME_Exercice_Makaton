@@ -5,8 +5,8 @@ user_id = <%= current_user.id%>;
 <% end %>
 var gallery_id = <%= @gallery.id %>;
 var exercice_type = '<%= @exercice_type %>';
-	$.preload( '/assets/mak-bon.jpg',
-  		'/assets/mak-mauvais.jpg' 
+	$.preload( '/assets/mak-bon.png',
+  		'/assets/mak-mauvais.png' 
 	);
  	var reinit = $('#pictures_row').clone();
 	var answer = true;
@@ -17,9 +17,9 @@ var exercice_type = '<%= @exercice_type %>';
 	$(".true").click(function()
 		{
 			var classes = $(this).attr('class');
-			if( $(this).attr('src') != '/assets/mak-bon.jpg') {
+			if( $(this).attr('src') != '/assets/mak-bon.png') {
 			$(this).fadeOut(250,function(){
-			$(this).replaceWith(('<img  alt="mak-bon.jpg" src="/assets/mak-bon.jpg" class="'+ $(this).attr('class') +'"/>'));		
+			$(this).replaceWith(('<img  alt="mak-bon.png" src="/assets/mak-bon.png" class="'+ $(this).attr('class') +'"/>'));		
 			$(this).fadeIn(250);});
 			if (user_id!=null)
 			{
@@ -53,9 +53,9 @@ var exercice_type = '<%= @exercice_type %>';
 	$(".false").click(function()
 		{
 			answer = false;
-			if( $(this).attr('src') != '/assets/mak-mauvais.jpg') {
+			if( $(this).attr('src') != '/assets/mak-mauvais.png') {
 			$(this).fadeOut(250,function(){
-			$(this).replaceWith(('<img  alt="mak-bon.jpg" src="/assets/mak-mauvais.jpg" class="'+ $(this).attr('class') +'"/>'));				
+			$(this).replaceWith(('<img  alt="mak-bon.png" src="/assets/mak-mauvais.png" class="'+ $(this).attr('class') +'"/>'));				
 			$(this).fadeIn(250);});
 			}
 		}

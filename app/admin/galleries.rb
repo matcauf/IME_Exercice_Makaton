@@ -20,6 +20,7 @@ ActiveAdmin.register Gallery do
     render "show"
   end
   
+  
   form :title => "Création d'une sous-catégorie" do |f|
      f.inputs "Sous-catégorie" do
     f.input :category, :label => "Catégorie", :collection => Category.order('name ASC')
@@ -28,4 +29,14 @@ ActiveAdmin.register Gallery do
     f.actions
   end
   
+  controller do
+    def new
+    if params[:category_id]
+     @gallery= Gallery.new(:category_id => params[:category_id].to_i)
+     
+     else
+       @gallery = Gallery.new
+    end
+  end
+  end
 end

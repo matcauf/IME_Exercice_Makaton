@@ -12,7 +12,7 @@
           	<% if @true_answer_number == 1 %>
           	 <%= image_tag @true_answer, :class => "true left size border" %>
           	<% elsif @answer =="white" %>
-          	<%= content_tag :span,"white",  :class => "false left size border white" %>
+          	<%= content_tag :span,"white",  :class => "false left size border whiteblock" %>
           	 <% else%>
           	 <%= image_tag @answer,  :class => "false left size border"%>
           	<% end %>
@@ -20,7 +20,7 @@
           	<% if @true_answer_number == 2 %>
           	 <%= image_tag @true_answer, :class => "true right size border" %>
           	 <% elsif @answer =="white" %>
-          	<%= content_tag :span,"white",  :class => "false right size border white" %>
+          	<%= content_tag :span,"white",  :class => "false right size border whiteblock" %>
           	<% else %>
           	 <%= image_tag @answer,  :class => "false right size border"%>
           	<% end %>

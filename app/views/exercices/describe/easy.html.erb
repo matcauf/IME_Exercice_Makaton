@@ -30,7 +30,7 @@ function init() {
   
   <% @answers.each do |answer| %>
   
-   $( '<div class="dragImg"> <div class="border white sizeDivVeryEasy"> <%=image_tag answer.picto.url(:small) %> <p> <%=answer.name%></p></div> </div>').attr('class', '<%= answer.grammar_pictogramme.name %>').appendTo( '#imgPile' ).draggable( {
+   $( '<div class="dragImg"> <div class="border white sizeDivVeryEasy"> <%=image_tag answer.picto.url(:small) %> <p> <%=answer.name%></p></div> </div>').data('id', '<%= answer.id.to_s%>').attr('class', '<%= answer.grammar_pictogramme.name %>').appendTo( '#imgPile' ).draggable( {
       containment: '#content',
       stack: '#imgPile div',
       revert: returnToYourPlace,

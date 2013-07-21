@@ -40,3 +40,7 @@ body.active_admin #header ul.tabs > li {
 body.active_admin form fieldset ol > li label {
     color: rgb(255, 255, 255);
 }
+
+#currentFocus{
+  text-transform:capitalize;
+}
