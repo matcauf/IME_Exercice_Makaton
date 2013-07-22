@@ -12,9 +12,7 @@ class PicturesController < ApplicationController
    
 
   def create
-    @picture = Picture.new(params[:picture])
-    
-    
+    @picture = Picture.new(params[:picture])   
       respond_to do |format|
       if @picture.save
         format.html {
@@ -29,7 +27,12 @@ class PicturesController < ApplicationController
       end
     end
   end
-
+ 
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    render nothing: true
+  end
   
 end
 

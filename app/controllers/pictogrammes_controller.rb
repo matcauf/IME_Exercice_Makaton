@@ -39,4 +39,10 @@ class PictogrammesController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @pictogramme = Pictogramme.find(params[:id])
+    @pictogramme.destroy
+    render nothing: true
+  end
 end
