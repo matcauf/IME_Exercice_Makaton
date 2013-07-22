@@ -74,6 +74,11 @@ end
     end
     
     def assign_role
+      @user = User.find(params[:user][:id])
+      if @user.has_role? :super_admin
+             redirect_to  admin_users_path, :notice => "On ne peut pas faire rétrograder un super Admin"
+             return
+          end
       if can?(:assign_role,User)
          params[:user][:role_ids].each do |role|
            if role!=""
@@ -83,7 +88,7 @@ end
         end
         end
         end
-        @user = User.find(params[:user][:id])
+        
 
         if @user.role_ids = params[:user][:role_ids]
           redirect_to  admin_users_path, :notice => @user.username + " est maintenant un " + t(@user.roles.first.name).titleize
