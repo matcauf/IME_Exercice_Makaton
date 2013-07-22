@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   
   def authenticate_active_admin_user!
     authenticate_user!
-    unless current_user.has_role? :admin or current_user.has_role? :teacher
+    unless current_user.has_role? :super_admin or current_user.has_role? :admin or current_user.has_role? :teacher
       flash[:alert] = "Vous n'avez pas les authorisations neccesaires"
       redirect_to root_path
     end
