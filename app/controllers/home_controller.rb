@@ -20,6 +20,11 @@ class HomeController < ApplicationController
     @type = params[:type]
     @number = params[:number]
     @title = exercice_name params[:type]
+    @navigation_categories.collect do |k,v|
+      return if v.length >= @number.to_i
+    end  
+     redirect_to root_path, :alert => "Aucune Catégorie valable"
+     return  
   end
   
 end

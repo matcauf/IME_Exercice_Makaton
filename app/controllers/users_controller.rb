@@ -39,14 +39,6 @@ class UsersController < ApplicationController
   def show
     authorize! :show, @user, :message => "Vous n'étes pas autorisé à voir cette page"
     @user = User.find(params[:id])
-    @categories = Category.all
-    @stats = Hash.new
-    @categories.each do |category|
-      category.galleries.each do |gallery|
-        @stats[gallery] = gallery.user_stats.find_by_user_id(@user.id)
-      end
-    end
-
   end
 
 end

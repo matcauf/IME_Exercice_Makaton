@@ -32,8 +32,7 @@ ActiveAdmin.register Gallery do
   controller do
     def new
     if params[:category_id]
-     @gallery= Gallery.new(:category_id => params[:category_id].to_i)
-     
+     @gallery= Gallery.new(:category_id => params[:category_id].to_i)     
      else
        @gallery = Gallery.new
     end
